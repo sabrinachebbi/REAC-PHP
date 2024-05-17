@@ -1,3 +1,9 @@
+
+
+<?php
+session_start();
+require  __DIR__."/db.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,6 +18,10 @@
                 <h2>Chat Room</h2>
             </div>
             <div class="chat-messages" id="chat-messages">
+
+            <?php foreach ($messages as $message): ?>
+                <div class="message">
+                    <span><?php echo $message['message']; ?></span>
                 <!-- Les messages apparaîtront ici -->
 
                 <!-- Start Message -->
@@ -24,8 +34,13 @@
 
             </div>
             <div class="chat-input">
-                <!-- Le formulaire pour envoyer des messages doit se trouver ci-dessous -->
+    
+        <form id="message-form" method="POST" class="mb-4">
+            <textarea id="message" name="message" placeholder="Type a message..." required></textarea>
+            <button type="submit">Send</button>
+        </form>
             </div>
         </div>
     </body>
 </html>
+
